@@ -4,8 +4,7 @@ A constructor method is a special method that is invoked when you create an obje
 - Its purpose is to instantiate an object of the class and store the reference in a reference variable.
 - Test testA = new Test();
 
-       <modifier> Classname();  
-- new is the modifier
+       <modifier> Classname();
 
 ### Static Variable and Methods
 
