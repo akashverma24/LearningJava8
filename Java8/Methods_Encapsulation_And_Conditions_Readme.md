@@ -32,3 +32,8 @@ Test testB = new Test(); testA and testB will have unique properties and behavio
  - Static methods cannot access or change the values of instance variables, but they can access or change the values of static variables.
 
  - Static methods cannot call non-static methods.
+
+### this Keyword
+
+ - Within an instance method or a constructor, this is a reference to the current object — the object whose method or constructor is being called. You can refer to any member of the current object from within an instance method or a constructor by using this.
+ - From within a constructor, you can also use the this keyword to call another constructor in the same class. Doing so is called an explicit constructor invocation. Here's another Rectangle class, with a different implementation from the one in the Objects section.
