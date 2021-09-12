@@ -33,6 +33,7 @@ e.g. Test testA = new Test(); Test testB = new Test(); testA and testB will have
 - Static methods cannot call non-static methods.
 
 ### this Keyword
+‘this’ is a reference variable that refers to the current object.
 
 - Within an instance method or a constructor, this is a reference to the current object — the object whose method or constructor is being called. You can refer to any member of the current object from within an instance method or a constructor by using this.
 - From within a constructor, you can also use the `this` keyword to call another constructor in the same class. Doing so is called an explicit constructor invocation. Here's another Rectangle class, with a different implementation from the one in the Objects section.
@@ -65,23 +66,34 @@ If you omit `this` keyword in the example above, the output would be "0" instead
 
 Usage 2: `this` keyword can be used to invoke current class method (implicitly)
 
-    public class Customer {
-      void setValue() {
 
-        System.out.println("hello");
-      }
-      void show(){
-        setValue();
-        //this.setValue(); complier will add this implicitly
-      }
+    class Test {
 
-    public static void main(String args[]){
+	void display()
+	{
+		// calling function show()
+		this.show();
+        //show() invokes this implicitly
+	
+	System.out.println("Inside display function");
+	}
+	
+	void show() {
+		System.out.println("Inside show function");
+	}
+	
 
-        Customer customer = new Customer();
-        customer.show();
-      }
+	public static void main(String args[]) {
+		Test t1 = new Test();
+		t1.display();
+	  }
     }
-In above example output will be "hello", here `this` is implicitly called by the compiler to invoke current class method.
+
+In above example output will be
+
+`Inside show function`
+
+`Inside display function`, here `this` is implicitly called by the compiler to invoke current class method show().
 
 Usage 3: `this` keyword can be used to invoke current class constructor
 
@@ -106,3 +118,85 @@ Usage 3: `this` keyword can be used to invoke current class constructor
 - if user wants to invoke no argument constructor can use this() keyword
 - if user wants to invoke parameterized constructor can use this(string) keyword
 - refer comments in example
+
+Usage 4: `this` keyword can be used to pass as an argument in the method call
+
+    
+
+    class Test
+      {
+        int a;
+        int b;
+
+	// Default constructor
+	Test()
+	{
+		a = 10;
+		b = 20;
+	}
+	
+	// Method that receives 'this' keyword as parameter
+	void display(Test obj)
+	{
+		System.out.println("a = " +obj.a + " b = " + obj.b);
+	}
+
+	// Method that returns current class instance
+	void get()
+	{
+		display(this);
+	}
+
+	public static void main(String[] args)
+	{
+		Test object = new Test();
+		object.get();
+	}
+}
+
+In the above example `this` keyword is used to pass as an argument in the method call
+and the output is `a = 10  b = 20`
+
+Usage 5: `this` keyword can be used to pass as an argument in the constructor call
+
+We can pass the this keyword in the constructor also. It is useful if we have to use one object in multiple classes.
+
+
+    class A
+      {
+        B obj;
+
+    // Parameterized constructor with object of B
+    // as a parameter
+        A(B obj)
+        {
+        this.obj = obj;
+
+        // calling display method of class B
+        obj.display();
+        }
+
+      }
+
+    class B
+      {
+        int x = 5;
+
+    // Default Constructor that create a object of A
+    // with passing this as an argument in the
+    // constructor
+        B()
+          {
+            A obj = new A(this);
+          }
+
+      // method to show value of x
+        void display()
+          {
+        System.out.println("Value of x in Class B : " + x);
+        }
+
+        public static void main(String[] args) {
+          B obj = new B();
+          }
+      }
