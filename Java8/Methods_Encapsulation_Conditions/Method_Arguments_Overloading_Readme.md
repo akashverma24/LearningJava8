@@ -73,3 +73,13 @@ Example:
             System.out.println("Method 3");
             return a+b;
         }
+
+### Method Overloading and Java API
+
+many methods do method overloading in java including System.out.println()
+ - void println(): Terminated the current line by writing the line separator string.
+ - void println(boolean x): prints boolean value and then terminates the line.
+ - void println(char x): prints boolean character and then terminates the line.
+ - void println(char[] x): prints array of characters and then terminates the line.
+
+
